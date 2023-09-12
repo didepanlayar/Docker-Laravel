@@ -2,7 +2,7 @@ version: "3.8"
 services:
   # NGINX Server
   nginx:
-    container_name: ${APP_CODE_NAME}-nginx
+    container_name: ${COMPOSE_PROJECT_NAME}-nginx
     image: nginx:${NGINX_VERSION}
     ports:
       - "${NGINX_HOST_HTTP_PORT}:80"
@@ -18,10 +18,10 @@ services:
       - backend
   # PHP-FPM
   php-fpm:
-    container_name: ${APP_CODE_NAME}-php-fpm
+    container_name: ${COMPOSE_PROJECT_NAME}-php-fpm
     build:
       context: ./php-fpm
-    image: docker-${APP_CODE_NAME}:${APP_CODE_VERSION}
+    image: docker-${COMPOSE_PROJECT_NAME}:${APP_CODE_VERSION}
     volumes:
       - ./php-fpm/php.ini:/usr/local/etc/php/conf.d/php.ini
       - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
@@ -29,7 +29,7 @@ services:
       - backend
   # MariaDB
   mariadb:
-    container_name: ${APP_CODE_NAME}-mariadb
+    container_name: ${COMPOSE_PROJECT_NAME}-mariadb
     image: mariadb:${MARIADB_VERSION}
     ports:
       - "${MARIADB_PORT}:3306"
