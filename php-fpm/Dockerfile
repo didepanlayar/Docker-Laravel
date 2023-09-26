@@ -45,6 +45,8 @@ RUN docker-php-ext-install \
     bz2 \
     zip
 
+RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
+
 RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg && docker-php-ext-install -j$(nproc) gd
 
 # Composer
