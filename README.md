@@ -33,16 +33,21 @@ DockerLaravel
 ├── Makefile
 ├── README.md
 ├── data
+├── docker-compose-production.yml
 ├── docker-compose.yml
 ├── logs
 │   └── nginx
 ├── nginx
 │   └── sites
 │       ├── default.conf
+│       ├── domain.conf.example
 │       └── laravel.conf.example
-└── php-fpm
-    ├── Dockerfile
-    └── php.ini
+├── php-fpm
+│   ├── Dockerfile
+│   └── php.ini
+└── ssl
+    ├── certs
+    └── private
 ```
 
 Place your Laravel Project outside this folder.
