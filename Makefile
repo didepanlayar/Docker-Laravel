@@ -34,7 +34,7 @@ docker-stop:
 	@docker-compose stop
 
 docker-login:
-	@docker exec -it $(COMPOSE_PROJECT_NAME)-php-fpm /bin/bash
+	@docker exec -it php-fpm /bin/bash
 
 logs:
 	@docker-compose logs -f
