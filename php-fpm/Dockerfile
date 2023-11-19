@@ -1,4 +1,4 @@
-FROM php:7.4-fpm
+FROM php:7.4.33-fpm
 
 WORKDIR /var/www/html
 
@@ -51,3 +51,9 @@ RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg && docke
 
 # Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# NodeJS
+RUN apt-get install -y nodejs npm
+
+# Clear Cache
+RUN apt-get clean && apt-get autoremove --purge && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
